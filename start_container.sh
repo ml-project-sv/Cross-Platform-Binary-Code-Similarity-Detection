@@ -1,0 +1,1 @@
+docker run -it --rm -v "$(pwd):/work:Z" -w /work ubuntu:22.04 bash
