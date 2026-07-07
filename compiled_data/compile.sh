@@ -6,13 +6,14 @@ OPTS=("O0" "O1" "O2" "O3")
 
 declare -A CMPS=(
     [x86]="gcc -m32"
-    # [arm32]="arm-linux-gnueabi-gcc"
-    # [mips32]="mips-linux-gnu-gcc"
+    [arm32]="arm-linux-gnueabi-gcc"
+    [mips32]="mips-linux-gnu-gcc"
 )
 
 for arch in "${!CMPS[@]}"; do
     cc="${CMPS[$arch]}"
     for opt in "${OPTS[@]}"; do
+        echo "start openssl_1_0_1f-$arch-$opt.so"
 
         # create directory for each (arch, opt) pair 
         OBJ="openssl_1_0_1f-obj-${arch}-${opt}"
@@ -32,7 +33,7 @@ for arch in "${!CMPS[@]}"; do
         $cc -shared -fPIC -Wl,--allow-multiple-definition \
             -o openssl_1_0_1f-$arch-$opt.so $OBJ/*.o 2>/dev/null || true
 
-        echo "openssl_1_0_1f-$arch-$opt.so done!"
+        echo "done openssl_1_0_1f-$arch-$opt.so"
     done
 done
 
