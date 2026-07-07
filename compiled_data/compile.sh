@@ -13,8 +13,6 @@ declare -A CMPS=(
 for arch in "${!CMPS[@]}"; do
     cc="${CMPS[$arch]}"
     for opt in "${OPTS[@]}"; do
-        echo "start openssl_1_0_1f-$arch-$opt.so"
-
         # create directory for each (arch, opt) pair 
         OBJ="openssl_1_0_1f-obj-${arch}-${opt}"
         mkdir -p $OBJ
@@ -33,7 +31,7 @@ for arch in "${!CMPS[@]}"; do
         $cc -shared -fPIC -Wl,--allow-multiple-definition \
             -o openssl_1_0_1f-$arch-$opt.so $OBJ/*.o 2>/dev/null || true
 
-        echo "done openssl_1_0_1f-$arch-$opt.so"
+        echo "openssl_1_0_1f-$arch-$opt.so done!"
     done
 done
 
