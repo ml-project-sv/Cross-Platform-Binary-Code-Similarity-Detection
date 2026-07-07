@@ -4,7 +4,8 @@ int add(int a, int b) {
 }
 
 int sub(int a, int b) {
-    int c = a + b;
+    int c = add(a, -b);
+
     if (a == 0) {
         return b;
     }

@@ -67,8 +67,8 @@ build_zlib() {
 }
 
 
-# build_openssl
-# build_zlib
+build_openssl
+build_zlib
 
 # check number of exported functions in openssl .so files
 for f in openssl_so/*.so; do   

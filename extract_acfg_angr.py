@@ -1,13 +1,14 @@
-import os, sys, json, logging
+import os, sys, json
 import angr, capstone
 import networkx as nx
 from capstone import x86, arm, mips
 from collections import defaultdict
 
 # make angr save metadata in /tmp
-os.environ['TMPDIR'] = '/tmp'
-os.environ['ANGR_CACHE_DIR'] = '/tmp/angr_cache'
-os.makedirs('/tmp/angr_cache', exist_ok=True)
+# os.environ['TMPDIR'] = '/tmp'
+# os.environ['ANGR_CACHE_DIR'] = '/tmp/angr_cache'
+# os.makedirs('/tmp/angr_cache', exist_ok=True)
+
 
 SKIP    = {'_init', '_fini', 'frame_dummy', 'register_tm_clones', 'deregister_tm_clones', '__do_global_ctors_aux', '__do_global_dtors_aux', 'atexit', '__libc_csu_init', '__libc_csu_fini', 'call_weak_fn', 'abort', '__gmon_start__'}
 FEAT    = ['str', 'imm', 'branch', 'call', 'insns', 'arith', 'outdeg', 'betw', 'logic', 'shift', 'mul', 'div', 'move', 'cmp', 'pushpop', 'meminsn', 'fpsimd', 'indeg', 'operands', 'mnems', 'size']
@@ -21,6 +22,8 @@ MOVE    = {'mov', 'movz', 'movk', 'movt', 'movw', 'ld', 'ldr', 'ldm', 'st', 'str
 CMP     = {'cmp', 'cmn', 'test', 'tst', 'slt', 'slti', 'sltu', 'fcmp', 'ucomiss'}
 PUSHPOP = {'push', 'pop', 'pushad', 'popad'}
 FPSIMD  = {'addsd', 'subsd', 'mulsd', 'divsd', 'movss', 'movsd', 'movaps', 'movups', 'paddd', 'pmuludq', 'pxor', 'vadd', 'vmul', 'vsub', 'fadd', 'fmul', 'fsub', 'fdiv', 'vldr', 'vstr', 'vmov', 'cvtsi2sd', 'cvttsd2si'}
+
+
 
 # imm and mem constants for given arch
 def imm_mem_for(arch):
@@ -158,3 +161,4 @@ if __name__ == '__main__':
     so_path, src_tag, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
     n_funcs_written = extract(so_path, src_tag, out_path)
     print(f'{n_funcs_written} extracted from {so_path}')
+
