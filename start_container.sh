@@ -1,1 +1,2 @@
-docker run -it --rm -v "$(pwd):/work:Z" -w /work ubuntu:22.04 bash
+docker build -t bincomp .
+docker run -it --rm -v "$(pwd):/work" -w /work bincomp bash
