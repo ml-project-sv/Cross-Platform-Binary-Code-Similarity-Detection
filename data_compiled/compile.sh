@@ -7,15 +7,15 @@ declare -A CMPS=(
 )
 
 build_openssl() {
-    SRC="../data_source/openssl-OpenSSL_1_0_1f"
+    SRC="../data_source/openssl-OpenSSL_1_0_1u"
     SRCS=$(find $SRC -name "*.c")
 
     for arch in "${!CMPS[@]}"; do
         cc="${CMPS[$arch]}"
         for opt in "${OPTS[@]}"; do
             # create directory for each (arch, opt) pair 
-            OBJ="openssl_obj/openssl_1_0_1f-obj-${arch}-${opt}"
-            mkdir -p $OBJ openssl_so
+            OBJ="openssl_1_0_1u_obj/openssl_1_0_1u-obj-${arch}-${opt}"
+            mkdir -p $OBJ openssl_1_0_1u_so
 
             # header file include command for compiler
             INC="-I$SRC/include -I$SRC/crypto -I$SRC"
@@ -24,14 +24,14 @@ build_openssl() {
             for c in $SRCS; do
                 $cc -$opt -DOPENSSL_NO_ASM -fPIC $INC \
                     -c "$c" \
-                    -o "${OBJ}/openssl_1_0_1f-$arch-$opt-$(basename "${c%.c}").o" 2>/dev/null || true
+                    -o "${OBJ}/openssl_1_0_1u-$arch-$opt-$(basename "${c%.c}").o" 2>/dev/null || true
             done
 
             # link .o object files into .so library
             $cc -shared -fPIC -Wl,--allow-multiple-definition \
-                -o openssl_so/openssl_1_0_1f-$arch-$opt.so $OBJ/*.o 2>/dev/null || true
+                -o openssl_1_0_1u_so/openssl_1_0_1u-$arch-$opt.so $OBJ/*.o 2>/dev/null || true
 
-            echo "openssl_1_0_1f-$arch-$opt.so done!"
+            echo "openssl_1_0_1u-$arch-$opt.so done!"
         done
     done
 }
@@ -96,9 +96,9 @@ build_sqlite3() {
 }
 
 
-# build_openssl
+build_openssl
 # build_zlib
-build_sqlite3
+# build_sqlite3
 
 # # check number of exported functions in openssl .so files
 # for f in openssl_so/*.so; do   

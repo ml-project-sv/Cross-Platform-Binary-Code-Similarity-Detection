@@ -11,8 +11,8 @@ extract_acfg() {
     done
 }
 
-# extract_acfg "openssl"
+extract_acfg "openssl_1_0_1u"
 # extract_acfg "zlib"
-extract_acfg "sqlite3"
+# extract_acfg "sqlite3"
 
 

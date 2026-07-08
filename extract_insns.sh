@@ -11,8 +11,8 @@ extract_insns() {
     done
 }
 
-# extract_insns "openssl"
+extract_insns "openssl_1_0_1u"
 # extract_insns "zlib"
-extract_insns "sqlite3"
+# extract_insns "sqlite3"
 
 
