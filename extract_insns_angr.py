@@ -87,7 +87,7 @@ def extract(so_path, src_tag, out_path):
                 for ci in blk.capstone.insns:
                     insns.append(normalize_insn(proj, ci, IMM, MEM, REG))
 
-            out.write(json.dumps({'src': f'{src_tag}/{func.name}', 'fname': func.name, 'insns': insns}) + '\n')
+            out.write(json.dumps({'src': f'{src_tag}/{func.name}', 'fname': func.name, 'n_num': len(nodes), 'insns': insns}) + '\n')
             n_funcs_written += 1
 
     return n_funcs_written
