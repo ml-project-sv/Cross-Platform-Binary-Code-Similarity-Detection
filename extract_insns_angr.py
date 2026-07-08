@@ -2,7 +2,6 @@ import os, sys, json
 import angr, capstone
 import networkx as nx
 from capstone import x86, arm, mips
-from collections import defaultdict
 
 # make angr save metadata in /tmp
 # os.environ['TMPDIR'] = '/tmp'

@@ -7,7 +7,7 @@ declare -A CMPS=(
 )
 
 build_openssl() {
-    SRC="../source_data/openssl-OpenSSL_1_0_1f"
+    SRC="../data_source/openssl-OpenSSL_1_0_1f"
     SRCS=$(find $SRC -name "*.c")
 
     for arch in "${!CMPS[@]}"; do
@@ -38,7 +38,7 @@ build_openssl() {
 
 
 build_zlib() {
-    SRC="../source_data/zlib-1.3.1"
+    SRC="../data_source/zlib-1.3.1"
     SRCS=$(find $SRC -name "*.c")
 
     for arch in "${!CMPS[@]}"; do
@@ -66,17 +66,47 @@ build_zlib() {
     done
 }
 
+build_sqlite3() {
+    SRC="../data_source/sqlite-amalgamation-3530300"
 
-build_openssl
-build_zlib
+    for arch in "${!CMPS[@]}"; do
+        cc="${CMPS[$arch]}"
+        for opt in "${OPTS[@]}"; do
+            # create directory for each (arch, opt) pair 
+            OBJ="sqlite3_obj/sqlite-amalgamation-3530300-obj-${arch}-${opt}"
+            mkdir -p $OBJ sqlite3_so
 
-# check number of exported functions in openssl .so files
-for f in openssl_so/*.so; do   
-    echo "$f: $(nm -D "$f" 2>/dev/null | grep ' T ' | wc -l) functions, $(stat -c%s "$f") bytes";
-done
+            INC="-I$SRC"
 
-# check number of exported functions in zlib .so files
-for f in zlib_so/*.so; do   
-    echo "$f: $(nm -D "$f" 2>/dev/null | grep ' T ' | wc -l) functions, $(stat -c%s "$f") bytes";
-done
+            # compile only sqlite3.c
+            c=$SRC/sqlite3.c
+
+            # compile c source files into .o object files
+            $cc -$opt -fPIC $INC \
+                -c $c \
+                -o "${OBJ}/sqlite-amalgamation-3530300-$arch-$opt-$(basename "${c%.c}").o" #2>/dev/null || true
+
+            # link .o object files into .so library
+            $cc -shared -fPIC -Wl,--allow-multiple-definition \
+                -o sqlite3_so/sqlite-amalgamation-3530300-$arch-$opt.so $OBJ/*.o 2>/dev/null || true
+
+            echo "sqlite-amalgamation-3530300-$arch-$opt.so done!"
+        done
+    done
+}
+
+
+# build_openssl
+# build_zlib
+build_sqlite3
+
+# # check number of exported functions in openssl .so files
+# for f in openssl_so/*.so; do   
+#     echo "$f: $(nm -D "$f" 2>/dev/null | grep ' T ' | wc -l) functions, $(stat -c%s "$f") bytes";
+# done
+
+# # check number of exported functions in zlib .so files
+# for f in zlib_so/*.so; do   
+#     echo "$f: $(nm -D "$f" 2>/dev/null | grep ' T ' | wc -l) functions, $(stat -c%s "$f") bytes";
+# done
 
