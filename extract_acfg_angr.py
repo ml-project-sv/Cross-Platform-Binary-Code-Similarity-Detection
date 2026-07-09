@@ -73,6 +73,9 @@ def block_features_for(proj, blk, out_deg, in_deg, betw, IMM, MEM):
         mnems.add(mnem)
         gr = set(ix.groups)
 
+        is_transfer = bool(gr & {capstone.CS_GRP_CALL, capstone.CS_GRP_JUMP,
+                                 capstone.CS_GRP_BRANCH_RELATIVE})
+
         if capstone.CS_GRP_CALL in gr: 
             f['call'] += 1
         
@@ -96,7 +99,7 @@ def block_features_for(proj, blk, out_deg, in_deg, betw, IMM, MEM):
             if IMM is not None and op.type == IMM:
                 f['imm'] += 1
 
-                if is_string_at(proj, op.imm):
+                if not is_transfer and is_string_at(proj, op.imm):
                     f['str'] += 1
             
             if MEM is not None and op.type == MEM:

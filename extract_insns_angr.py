@@ -46,13 +46,16 @@ def normalize_insn(proj, ci, IMM, MEM, REG):
     mnem = ix.mnemonic.split('.')[0]
     parts = [mnem]
 
+    is_transfer = bool(set(ix.groups) & {capstone.CS_GRP_CALL, capstone.CS_GRP_JUMP, capstone.CS_GRP_BRANCH_RELATIVE})
+    
     for op in ix.operands:
+
         if REG is not None and op.type == REG:
             parts.append('reg')
 
         elif IMM is not None and op.type == IMM:
-            parts.append('str' if is_string_at(proj, op.imm) else 'imm')
-
+            parts.append('imm' if is_transfer else ('str' if is_string_at(proj, op.imm) else 'imm'))
+        
         elif MEM is not None and op.type == MEM:
             parts.append('mem')
 
