@@ -628,8 +628,8 @@ coarse:  addiu reg reg imm    rich:  addiu $sp $sp -40
 <!-- ჩასვი W&B-დან გადმოღებული სქრინშოთები -->
 | მოდელი | score_distribution |
 |---|---|
-| Baseline feature agg | images/score_distribution_feature_agg.png |
 | Baseline Opcode Histogram | images/score_distribution_histogram.png |
+| Baseline feature agg | images/score_distribution_feature_agg.png |
 | MLP Aggregator | images/score_distribution_mlp_agg.png |
 | DeepSets | images/score_distribution_deepsets.png |
 | Structure2vec | images/score_distribution_s2v.png |
