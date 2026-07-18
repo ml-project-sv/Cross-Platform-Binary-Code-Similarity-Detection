@@ -111,6 +111,7 @@
 
 ### რეპოზიტორიის სტრუქტურა
 
+```
 Cross-Platform-Binary-Code-Similarity-Detection/
 │
 ├── container/
@@ -178,6 +179,7 @@ Cross-Platform-Binary-Code-Similarity-Detection/
 │       └── მოდელი 10: იერარქიული SAFE + GNN
 │
 └── README.md
+```
 
 SAFE-ის rich ვარიანტი (W&B-ზე ცალკე პროექტია, binsim_safe_rich) იმავე SAFE pipeline-ს იყენებს, უბრალოდ data_insns_rich მონაცემებზეა გაშვებული.
  
