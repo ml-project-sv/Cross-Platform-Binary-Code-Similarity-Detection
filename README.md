@@ -208,7 +208,7 @@ Cross-Platform-Binary-Code-Similarity-Detection/
 
 ### კომპილაცია: 3 არქიტექტურა × 4 ოპტიმიზაცია
  
-* თითოეული ბიბლიოთეკა დავაკომპილირეთ *12 კონფიგურაციაში*: {x86 (32-bit), ARM32, MIPS32} × {O0, O1, O2, O3}. გამოვიყენეთ GCC-ის cross-toolchain-ები:
+* თითოეული ბიბლიოთეკა დავაკომპილირეთ *12 კონფიგურაციით*: {x86 (32-bit), ARM32, MIPS32} × {O0, O1, O2, O3}. გამოვიყენეთ GCC-ის cross-toolchain-ები:
 declare -A CMPS=(
     [x86]="gcc -m32"
     [arm32]="arm-linux-gnueabi-gcc"
