@@ -221,12 +221,12 @@ declare -A CMPS=(
 
 * ყველა .c ფაილი პირდაპირ ვაკომპილირეთ ობიექტებად და შემდეგ ერთ `.so`-დ დავლინკეთ:
 
-# .c ფაილები -> .o ობიექტები
+## .c ფაილები -> .o ობიექტები
 ```sh
 $cc -$opt -DOPENSSL_NO_ASM -fPIC $INC -c "$c" -o "$OBJ/....o" 2>/dev/null || true
 ```
 
-# .o ფაილები -> ერთი დიდი .so ბიბლიოთეკა
+## .o ფაილები -> ერთი დიდი .so ბიბლიოთეკა
 ```sh
 $cc -shared -fPIC -Wl,--allow-multiple-definition -o "....so" $OBJ/*.o
 ```
