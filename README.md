@@ -91,6 +91,13 @@
 
 ![alt text](./images/analyze_scores_x86_O0_graph_disas.png)
 
+* თითოეული `node` (კოდის `chunk`) ამ გრაფში არის ჩვეულებრივ ასემბლის კოდის ინსტრუქციები და ყოველი `chunk`-ის ბოლოს გვაქვს branching ინსტრუქციები, როგორებიცაა `jmp`, `je`, `jne`, `call` და ა.შ:
+
+![alt text](./images/analyze_scores_x86_O0_graph_node.png)
+
+
+
+
 
 
 
