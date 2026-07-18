@@ -578,11 +578,11 @@ angr-ის ნელი ანალიზი, cross-compilation-ის  build 
 ## 13. რეპროდუცირება
  
 # 1. მონაცემების გენერაცია (Docker - angr + cross-compilers)
-cd container && docker build -t binsim .
-docker run -v $(pwd)/../data:/data binsim bash /data_compiled/compile.sh   # 48 ბინარი
-docker run -v $(pwd)/../data:/data binsim python extract_acfg_angr.py      # ACFG (21 feature)
-docker run -v $(pwd)/../data:/data binsim python extract_insns_angr.py     # coarse tokens (vocab 656)
-docker run -v $(pwd)/../data:/data binsim python extract_insns_rich_angr.py # rich tokens (vocab 93,926)
+`cd container && docker build -t binsim .`
+`docker run -v $(pwd)/../data:/data binsim bash /data_compiled/compile.sh`   # 48 ბინარი
+`docker run -v $(pwd)/../data:/data binsim python extract_acfg_angr.py`      # ACFG (21 feature)
+`docker run -v $(pwd)/../data:/data binsim python extract_insns_angr.py`     # coarse tokens (vocab 656)
+`docker run -v $(pwd)/../data:/data binsim python extract_insns_rich_angr.py` # rich tokens (vocab 93,926)
  
 # 2. ტრენინგი - notebook-ები (Kaggle T4 / Colab; path autodetect + pickle cache)
 #    ყოველი notebook შეიცავს ფიქსირებულ eval harness-ს (იდენტური ყველა მოდელისთვის)
