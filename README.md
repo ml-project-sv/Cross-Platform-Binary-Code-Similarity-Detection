@@ -395,20 +395,22 @@ coarse:  addiu reg reg imm    rich:  addiu $sp $sp -40
  
 # მოდელები
  
-სულ გავტესტეთ *10 მოდელი*, რომლებიც 9 W&B პროექტშია განაწილებული (Structure2vec და GIN ერთ პროექტს იზიარებს), ამ თანმიმდევრობით (ეს ქრონოლოგიური რიგიცაა და, უმეტესწილად, სუსტიდან ძლიერისკენ მიმავალი):
+სულ გავტესტეთ *12 მოდელი*, რომლებიც 10 W&B პროექტშია განაწილებული (Structure2vec და GIN ერთ პროექტს იზიარებს), ამ თანმიმდევრობით (ეს ქრონოლოგიური რიგიცაა და, უმეტესწილად, სუსტიდან ძლიერისკენ მიმავალი):
  
 1. [binsim_baseline_opcode-histogram](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_baseline_opcode-histogram)
 2. [binsim_baseline_feature-aggregator](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_baseline_feature-aggregator)
 3. [binsim_mlp-aggregator](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_mlp-aggregator)
 4. [binsim_deepsets](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_deepsets)
-5. [binsim_gnn](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gnn) (Structure2vec და GIN)
-6. [binsim_gmn](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gmn)
-7. [binsim_safe](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_safe)
-8. [binsim_safe_rich](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_safe_rich)
-9. [binsim_hbinsim](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_hbinsim)
-მიდგომა ყველგან ერთნაირი გვქონდა: მოდელს ვუშვებდით საბაზისო კონფიგურაციით, შემდეგ პარამეტრებს ნელ-ნელა, სათითაოდ ვუცვლიდით და W&B-ზე ვაკვირდებოდით, რა აუმჯობესებდა ან აუარესებდა შედეგს. ქვემოთ თითო მოდელისთვის სწორედ ეს შიდა ევოლუციაა აღწერილი, ბოლოს კი - მაკრო-სურათი, თუ რატომ დგას თითოეული მოდელი წინაზე მაღლა.
- 
-ყველგან, სადაც სხვა რამ არ არის მითითებული, რიცხვები არის *Recall@1 pool=1000, n_queries=3000, openssl-1.0.1f-ის test ნაწილზე*, ხოლო zlib/sqlite სვეტები - out-of-dataset Recall@1 pool=1000.
+5. [binsim_gnn](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gnn) (Structure2vec)
+6. [binsim_gin](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gnn) (GIN)
+6. [binsim_gin](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gnn) (GAT)
+7. [binsim_gmn](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_gmn)
+8. [binsim_safe](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_safe)
+9. [binsim_safe_rich](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_safe_rich)
+10. [binsim_hbinsim](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_hbinsim)
+11. [binsim_safe_transformer](https://wandb.ai/sbolk23-free-university-of-tbilisi-/binsim_safe_transformer)
+
+მიდგომა ყველგან ერთნაირი გვქონდა: მოდელს ვუშვებდით საბაზისო კონფიგურაციით, შემდეგ პარამეტრებს ნელ-ნელა, სათითაოდ ვუცვლიდით და W&B-ზე ვაკვირდებოდით, რა აუმჯობესებდა ან აუარესებდა შედეგს. ქვემოთ თითო მოდელისთვის ეს ცვლილებებია აღწერილი.
  
 ---
  
