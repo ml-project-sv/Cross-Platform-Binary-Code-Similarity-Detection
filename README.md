@@ -628,13 +628,17 @@ coarse:  addiu reg reg imm    rich:  addiu $sp $sp -40
 <!-- ჩასვი W&B-დან გადმოღებული სქრინშოთები -->
 | მოდელი | score_distribution |
 |---|---|
-| Opcode Histogram | images/score_distribution_histogram.png |
+| Baseline feature agg | images/score_distribution_feature_agg.png |
+| Baseline Opcode Histogram | images/score_distribution_histogram.png |
 | MLP Aggregator | images/score_distribution_mlp_agg.png |
 | DeepSets | images/score_distribution_deepsets.png |
 | Structure2vec | images/score_distribution_s2v.png |
 | GIN | images/score_distribution_gin.png |
+| GMN | images/score_distribution_gmn.png |
 | SAFE | images/score_distribution_safe.png |
 | SAFE-rich | images/score_distribution_safe_rich.png |
+| Hbinsim | images/score_distribution_Hbinsin.png |
+| SAFE-transformer | images/score_distribution_safe_transfromer.png |
  
 ამ სქრინშოთების გვერდიგვერდ დათვალიერება მთელ ისტორიას ერთ სურათად კრებს:
 1. *Histogram*: ორი განაწილება პრაქტიკულად ერთმანეთს ემთხვევა (AUC ~0.5).
